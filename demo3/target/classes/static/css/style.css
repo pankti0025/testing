@@ -1,0 +1,360 @@
+/* ===== CSS Variables ===== */
+:root {
+    --primary-color: #4361ee;
+    --primary-dark: #3a56d4;
+    --secondary-color: #7209b7;
+    --accent-color: #f72585;
+    --light-color: #ffffff;
+    --dark-color: #2d3436;
+    --gray-light: #e9ecef;
+    --gray-medium: #adb5bd;
+    --success-color: #4cc9f0;
+    --shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+    --shadow-hover: 0 20px 40px rgba(50, 50, 93, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
+    --border-radius: 16px;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ===== Body ===== */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    color: var(--dark-color);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Decorative background elements */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
+    z-index: -1;
+}
+
+/* ===== Form Container ===== */
+form {
+    background: var(--light-color);
+    padding: 45px 50px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    width: 450px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Decorative form accent */
+form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    z-index: 2;
+}
+
+form::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(67, 97, 238, 0.05) 0%, transparent 70%);
+    z-index: -1;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(10px, -10px) rotate(1deg); }
+    66% { transform: translate(-10px, 5px) rotate(-1deg); }
+}
+
+form:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-5px);
+}
+
+/* ===== Page Title ===== */
+body > h2 {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--light-color);
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 0 20px;
+}
+
+/* Title decorative underline */
+body > h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), var(--light-color));
+    border-radius: 2px;
+}
+
+/* ===== Inputs & Textarea ===== */
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 18px 22px;
+    margin-bottom: 25px;
+    border: 2px solid var(--gray-light);
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    transition: var(--transition);
+    background-color: #fff;
+    color: var(--dark-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 1;
+}
+
+/* Input focus effect */
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.15);
+    outline: none;
+    transform: translateY(-2px);
+}
+
+/* Input hover effect */
+form input[type="text"]:hover,
+form input[type="email"]:hover,
+form textarea:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.1);
+}
+
+/* ===== Placeholder Styling ===== */
+::placeholder {
+    color: var(--gray-medium);
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+/* ===== Textarea ===== */
+form textarea {
+    resize: none;
+    min-height: 140px;
+    line-height: 1.6;
+    padding-top: 16px;
+}
+
+/* Textarea character counter */
+form textarea {
+    position: relative;
+}
+
+/* ===== Submit Button ===== */
+form button[type="submit"] {
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--light-color);
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    transition: var(--transition);
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(67, 97, 238, 0.3);
+    letter-spacing: 0.5px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Button gradient overlay */
+form button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    transition: var(--transition);
+    z-index: -1;
+}
+
+form button[type="submit"]:hover::before {
+    left: 0;
+}
+
+form button[type="submit"]:hover {
+    box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
+    transform: translateY(-3px);
+}
+
+form button[type="submit"]:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+}
+
+/* Button icon */
+form button[type="submit"]::after {
+    content: '→';
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    opacity: 0.8;
+    transition: var(--transition);
+}
+
+form button[type="submit"]:hover::after {
+    transform: translateY(-50%) translateX(5px);
+}
+
+/* ===== Form Animation ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+form {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* ===== Input Animation ===== */
+form input[type="text"],
+form input[type="email"],
+form textarea,
+form button[type="submit"] {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+form input[type="text"] { animation-delay: 0.1s; }
+form input[type="email"] { animation-delay: 0.2s; }
+form textarea { animation-delay: 0.3s; }
+form button[type="submit"] { animation-delay: 0.4s; }
+
+/* ===== Responsive Design ===== */
+@media (max-width: 550px) {
+    form {
+        width: 90%;
+        max-width: 400px;
+        padding: 35px 30px;
+    }
+    
+    body > h2 {
+        font-size: 2.2rem;
+        top: 30px;
+    }
+    
+    form input[type="text"],
+    form input[type="email"],
+    form textarea {
+        padding: 16px 20px;
+        margin-bottom: 20px;
+    }
+    
+    form button[type="submit"] {
+        padding: 18px;
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 400px) {
+    form {
+        padding: 30px 25px;
+    }
+    
+    body > h2 {
+        font-size: 1.8rem;
+        top: 25px;
+    }
+    
+    body > h2::after {
+        bottom: -10px;
+        width: 60px;
+    }
+}
+
+/* ===== Focus Accessibility ===== */
+form input[type="text"]:focus-visible,
+form input[type="email"]:focus-visible,
+form textarea:focus-visible,
+form button[type="submit"]:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* ===== Loading State for Button ===== */
+form button[type="submit"].loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+form button[type="submit"].loading::after {
+    content: '';
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translateY(-50%) rotate(0deg); }
+    100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* ===== Success Animation ===== */
+@keyframes successPulse {
+    0% { box-shadow: 0 0 0 0 rgba(76, 201, 240, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(76, 201, 240, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(76, 201, 240, 0); }
+}
+
+form.success {
+    animation: successPulse 1s;
+}
